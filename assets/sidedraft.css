@@ -1,0 +1,296 @@
+/*
+ * The pane mirrors the editor beside it row for row. The script measures the
+ * editor and fills in these values; the defaults fit an unstyled admin.
+ */
+.sidedraft {
+	--sidedraft-width: 40%;
+	--sidedraft-top: 32px;
+	--sidedraft-head-pad: 20px;
+	--sidedraft-head: 54px;
+	--sidedraft-bar: 41px;
+	--sidedraft-text-top: 20px;
+}
+
+.sidedraft.is-open {
+	display: grid;
+	grid-template-columns: var(--sidedraft-width) minmax(0, 1fr);
+	gap: 20px;
+	align-items: start;
+}
+
+.sidedraft-pane {
+	display: none;
+}
+
+.sidedraft.is-open .sidedraft-pane {
+	position: sticky;
+	top: var(--sidedraft-top);
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - var(--sidedraft-top) - 12px);
+	min-height: 320px;
+}
+
+/* Level with the Add Media row: title on the left, tabs on the right like Visual and Text. */
+.sidedraft-head {
+	display: flex;
+	flex: none;
+	align-items: center;
+	box-sizing: border-box;
+	height: var(--sidedraft-head);
+	padding: var(--sidedraft-head-pad) 0 0 2px;
+}
+
+.sidedraft-head label {
+	color: #1d2327;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.sidedraft-views {
+	display: flex;
+	align-self: flex-end;
+	margin-left: auto;
+}
+
+/* Same look as the editor's Visual and Text tabs. */
+.sidedraft-view-button {
+	position: relative;
+	top: 1px;
+	z-index: 1;
+	box-sizing: content-box;
+	height: 20px;
+	margin: 5px 0 0 5px;
+	padding: 3px 8px 4px;
+	background: #f0f0f1;
+	border: 1px solid #dcdcde;
+	border-radius: 0;
+	color: #646970;
+	font-size: 13px;
+	line-height: 1.46153846;
+	cursor: pointer;
+}
+
+.sidedraft-view-button:focus {
+	outline: none;
+	box-shadow: 0 0 0 1px #4f94d4, 0 0 2px 1px rgba(79, 148, 212, 0.8);
+	color: #1d2327;
+}
+
+.sidedraft-view-button[aria-pressed="true"] {
+	background: #f6f7f7;
+	border-bottom-color: #f6f7f7;
+	color: #50575e;
+}
+
+/* Level with the editor box, with the same border. */
+.sidedraft-box {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+	background: #f6f4ee;
+	border: 1px solid #dcdcde;
+}
+
+/* Level with the editor toolbar, in its colors. */
+.sidedraft-bar {
+	display: flex;
+	flex: none;
+	align-items: center;
+	box-sizing: border-box;
+	height: var(--sidedraft-bar);
+	padding: 0 6px 0 12px;
+	background: #f6f7f7;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.sidedraft-count {
+	color: #50575e;
+	font-size: 13px;
+}
+
+.sidedraft-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	color: #50575e;
+	cursor: pointer;
+}
+
+.sidedraft-icon:hover,
+.sidedraft-icon:focus {
+	border-color: #50575e;
+	color: #1d2327;
+	outline: none;
+}
+
+.sidedraft-icon[aria-pressed="true"] {
+	background: #f0f0f1;
+	border-color: #8c8f94;
+	box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.3);
+}
+
+.sidedraft-icon + .sidedraft-icon {
+	margin-left: 2px;
+}
+
+.sidedraft-icon .dashicons {
+	width: 20px;
+	height: 20px;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.sidedraft-clear[disabled] {
+	visibility: hidden;
+}
+
+/*
+ * Outline icons: the dashicons trash is solid and reads heavier than its
+ * neighbors, and hiding gets a panel icon so it isn't mistaken for deleting.
+ */
+.sidedraft-icon svg {
+	display: block;
+}
+
+.sidedraft-focus-mini {
+	margin-left: auto;
+}
+
+.sidedraft[data-view="formatted"] #sidedraft-text,
+.sidedraft[data-view="source"] .sidedraft-formatted {
+	display: none;
+}
+
+#sidedraft-text {
+	flex: 1;
+	width: 100%;
+	margin: 0;
+	padding: var(--sidedraft-text-top) 20px 20px;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	resize: none;
+	color: #2c2a25;
+	font-family: Menlo, Consolas, Monaco, monospace;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+#sidedraft-text:focus {
+	box-shadow: inset 0 0 0 1px #2271b1;
+}
+
+.sidedraft-resize {
+	position: absolute;
+	top: var(--sidedraft-head);
+	right: -14px;
+	bottom: 0;
+	width: 8px;
+	cursor: col-resize;
+}
+
+.sidedraft-resize:hover,
+.sidedraft.is-resizing .sidedraft-resize {
+	background: #c3c4c7;
+}
+
+.sidedraft.is-resizing {
+	cursor: col-resize;
+	user-select: none;
+}
+
+/* Keep the drag going when the mouse passes over the visual editor. */
+.sidedraft.is-resizing iframe {
+	pointer-events: none;
+}
+
+.sidedraft-main {
+	min-width: 0;
+}
+
+/* Icon and label centered on one line, like Add Media. */
+.wp-media-buttons .button.sidedraft-toggle,
+.wp-media-buttons .button.sidedraft-focus {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	vertical-align: top;
+}
+
+.wp-media-buttons .sidedraft-toggle .dashicons,
+.wp-media-buttons .sidedraft-focus .dashicons {
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	font-size: 18px;
+	line-height: 1;
+}
+
+.wp-media-buttons .sidedraft-toggle[aria-pressed="true"],
+.wp-media-buttons .sidedraft-focus[aria-pressed="true"] {
+	background: #f0f0f1;
+	border-color: #8c8f94;
+	box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Focus mode: no admin menu, sidebar moves under the editor. */
+.sidedraft-focus-on #adminmenumain {
+	display: none;
+}
+
+.sidedraft-focus-on #wpcontent,
+.sidedraft-focus-on #wpfooter {
+	margin-left: 0;
+}
+
+.sidedraft-focus-on #poststuff #post-body.columns-2 {
+	margin-right: 0;
+}
+
+.sidedraft-focus-on #post-body.columns-2 #postbox-container-1 {
+	float: none;
+	clear: both;
+	width: auto;
+	margin-right: 0;
+	padding-top: 20px;
+}
+
+/* The full-height editor pins the sidebar while scrolling; undo that here. */
+.sidedraft-focus-on #post-body.columns-2 #side-sortables {
+	position: static !important;
+	top: auto !important;
+	width: auto !important;
+	min-height: 0;
+}
+
+@media screen and (max-width: 782px) {
+	.sidedraft {
+		--sidedraft-top: 46px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.sidedraft.is-open {
+		display: block;
+	}
+
+	.sidedraft.is-open .sidedraft-pane {
+		position: relative;
+		top: 0;
+		height: 50vh;
+		margin-bottom: 10px;
+	}
+
+	.sidedraft-resize {
+		display: none;
+	}
+}

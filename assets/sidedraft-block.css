@@ -1,0 +1,130 @@
+.interface-complementary-area:has(.sidedraft-sidebar) {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.sidedraft-sidebar.components-panel {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.sidedraft-sidebar .sidedraft-panel {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+}
+
+@media (min-width: 782px) {
+	.sidedraft-wide .interface-complementary-area__fill:has(.sidedraft-sidebar),
+	.sidedraft-wide .interface-complementary-area:has(.sidedraft-sidebar) {
+		width: min(42vw, 680px) !important;
+	}
+}
+
+@media (max-width: 781px) {
+	.sidedraft-widen {
+		display: none;
+	}
+}
+
+.sidedraft-toolbar {
+	display: flex;
+	flex: none;
+	align-items: center;
+	gap: 2px;
+	padding: 0 8px 0 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.sidedraft-tabs {
+	display: flex;
+	align-self: stretch;
+	margin-right: auto;
+}
+
+.sidedraft-tab {
+	position: relative;
+	height: 48px;
+	padding: 0 16px;
+	background: none;
+	border: 0;
+	border-radius: 0;
+	color: #1e1e1e;
+	font-size: 13px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.sidedraft-tab:hover {
+	color: var(--wp-admin-theme-color, #3858e9);
+}
+
+.sidedraft-tab[aria-pressed="true"] {
+	font-weight: 500;
+}
+
+.sidedraft-tab[aria-pressed="true"]::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1.5px;
+	background: var(--wp-admin-theme-color, #3858e9);
+}
+
+.sidedraft-tab:focus-visible {
+	outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+	outline-offset: -2px;
+}
+
+.sidedraft-clear svg {
+	fill: none;
+}
+
+.sidedraft-clear[disabled] {
+	visibility: hidden;
+}
+
+.sidedraft-count {
+	flex: none;
+	padding: 8px 16px;
+	background: #f6f4ee;
+	border-bottom: 1px solid #e6e1d3;
+	color: #757575;
+	font-size: 12px;
+}
+
+.sidedraft-sidebar .sidedraft-formatted,
+.sidedraft-source {
+	flex: 1;
+	min-height: 0;
+	background: #f6f4ee;
+}
+
+.sidedraft-sidebar .sidedraft-formatted {
+	padding: 16px 20px 24px;
+}
+
+.sidedraft-source {
+	width: 100%;
+	margin: 0;
+	padding: 16px 20px;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	resize: none;
+	color: #2c2a25;
+	font-family: Menlo, Consolas, Monaco, monospace;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+.sidedraft-source:focus {
+	box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color, #3858e9);
+	outline: none;
+}
