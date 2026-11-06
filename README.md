@@ -1,4 +1,4 @@
-# Sidedraft – Split-Screen Drafts
+# Draft Beside – Split-Screen Writing
 
 Keep a draft open beside the editor while you write the post in your own words.
 
@@ -37,7 +37,7 @@ Scripts, styles, embeds, forms, and event handlers are removed before the draft 
 
 ## Install
 
-1. Download the latest release, or clone this repo into `wp-content/plugins/sidedraft`.
+1. Download the latest release, or clone this repo into `wp-content/plugins/draft-beside`.
 2. Activate it from the Plugins screen.
 3. Classic editor: click **Draft** next to Add Media. Block editor: open the ⋮ menu and choose **Draft**.
 4. Paste your draft and start writing.

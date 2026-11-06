@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Sidedraft – Split-Screen Drafts
+ * Plugin Name:       Draft Beside – Split-Screen Writing
  * Description:       Keep a draft open beside the editor while you write the post in your own words. Works in the Classic and block editors.
  * Version:           1.0.0
  * Requires at least: 6.2
@@ -12,7 +12,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       sidedraft
  *
- * @package Sidedraft
+ * @package Draft_Beside
  */
 
 defined( 'ABSPATH' ) || exit;

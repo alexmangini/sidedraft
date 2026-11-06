@@ -3,7 +3,7 @@
  * The draft pane beside the Classic editor. Opens the split; the editor
  * prints into .sidedraft-main, which sidedraft_close() ends.
  *
- * @package Sidedraft
+ * @package Draft_Beside
  *
  * @var string $draft The post's saved draft.
  */

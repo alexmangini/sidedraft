@@ -1,4 +1,4 @@
-=== Sidedraft – Split-Screen Drafts ===
+=== Draft Beside – Split-Screen Writing ===
 Contributors: alexmangini
 Tags: writing, draft, markdown, classic editor, split screen
 Requires at least: 6.2
@@ -12,7 +12,7 @@ Keep a draft open beside the editor while you write the post in your own words.
 
 == Description ==
 
-Sidedraft puts a draft next to your post while you write. Paste in an outline, an old version, notes, or a draft from anywhere else, then write the real post beside it without switching windows.
+Draft Beside puts a draft next to your post while you write. Paste in an outline, an old version, notes, or a draft from anywhere else, then write the real post beside it without switching windows.
 
 The draft saves with the post. It is never shown on your site, in feeds, or in the public REST API.
 

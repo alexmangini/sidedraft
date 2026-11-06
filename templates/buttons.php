@@ -2,7 +2,7 @@
 /**
  * Draft and Focus buttons next to Add Media.
  *
- * @package Sidedraft
+ * @package Draft_Beside
  */
 
 defined( 'ABSPATH' ) || exit;
